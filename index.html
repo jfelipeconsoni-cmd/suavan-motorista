@@ -3,14 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "xm3hw0zsli");
-</script>
+<!-- Microsoft Clarity — carregado SOMENTE apos consentimento explicito.
+     Ver consent.js (arquivo identico nos 3 sites). -->
+<script src="consent.js" defer></script>
 <title>App para van escolar — gestão de alunos e cobrança | Sua Van</title>
 <meta name="description" content="O app gratuito para motoristas de van escolar: cadastre alunos, acompanhe pagamentos e mande a cobrança pronta — com o valor e a sua chave Pix — em 2 toques.">
 <link rel="canonical" href="https://motorista.suavan.com.br">
@@ -330,11 +325,11 @@
     <div class="form-card">
       <form id="leadForm">
         <div class="form-row full">
-          <div class="field"><label>Seu nome</label><input type="text" id="f_nome" placeholder="Como podemos te chamar" required></div>
+          <div class="field"><label>Seu nome</label><input type="text" id="f_nome" data-clarity-mask="true" placeholder="Como podemos te chamar" required></div>
         </div>
         <div class="form-row">
-          <div class="field"><label>WhatsApp</label><input type="tel" id="f_wpp" inputmode="numeric" maxlength="13" placeholder="(11)912345678" pattern="\(\d{2}\)\d{8,9}" title="Use o formato (XX)XXXXXXXXX" required></div>
-          <div class="field"><label>Cidade</label><input type="text" id="f_cidade" placeholder="Ex: São Paulo, SP"></div>
+          <div class="field"><label>WhatsApp</label><input type="tel" id="f_wpp" data-clarity-mask="true" inputmode="numeric" maxlength="13" placeholder="(11)912345678" pattern="\(\d{2}\)\d{8,9}" title="Use o formato (XX)XXXXXXXXX" required></div>
+          <div class="field"><label>Cidade</label><input type="text" id="f_cidade" data-clarity-mask="true" placeholder="Ex: São Paulo, SP"></div>
         </div>
         <div class="form-row">
           <div class="field"><label>Quantos alunos você atende?</label>
