@@ -81,7 +81,11 @@
   .pill{margin-left:auto;font-size:10px;font-weight:700;padding:3px 9px;border-radius:999px}
 
   section{padding:72px 0}
-  .sec-tag{font-size:13px;font-weight:700;letter-spacing:.7px;color:var(--g400);text-transform:uppercase;margin-bottom:10px;text-align:center}
+  /* ⚠️ `--g400` (#9CA3AF) sobre branco dá 2,56:1 e REPROVA no WCAG AA, que
+     exige 4,5:1 para texto normal. Aparecia nas 5 seções. `--g500` dá 4,84:1.
+     Não é firula: é o rótulo que diz de que trecho da página a pessoa está
+     lendo, e some para quem enxerga pouco — inclusive no sol, dentro da van. */
+  .sec-tag{font-size:13px;font-weight:700;letter-spacing:.7px;color:var(--g500);text-transform:uppercase;margin-bottom:10px;text-align:center}
   .sec-title{font-size:34px;font-weight:800;color:var(--g900);text-align:center;letter-spacing:-.4px;line-height:1.15;margin-bottom:14px}
   .sec-sub{font-size:17px;color:var(--g500);text-align:center;max-width:600px;margin:0 auto 48px}
 
@@ -119,18 +123,9 @@
   .comp.good .ms{color:var(--y400)}
 
   .cta-sec{background:var(--g50)}
-  .form-card{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--g200);border-radius:18px;padding:34px}
-  .form-row{display:flex;gap:14px;margin-bottom:14px}
-  .form-row.full{display:block}
-  .field{flex:1}
-  .field label{display:block;font-size:13.5px;font-weight:600;color:var(--g700);margin-bottom:7px}
-  .field input,.field select{width:100%;padding:13px 14px;border:1px solid var(--g300);border-radius:10px;font-size:15px;font-family:inherit;color:var(--g800)}
-  .field input:focus,.field select:focus{outline:none;border-color:var(--y400);box-shadow:0 0 0 3px rgba(250,204,21,.25)}
-  .form-card .btn{width:100%;justify-content:center;margin-top:8px}
-  .form-note{font-size:12.5px;color:var(--g500);text-align:center;margin-top:14px}
-  #formOk{display:none;text-align:center;padding:20px}
-  #formOk .ms{font-size:48px;color:var(--green)}
-  #formOk h3{font-size:20px;font-weight:800;color:var(--g900);margin:8px 0 4px}
+  .cta-box{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--g200);border-radius:18px;padding:34px;text-align:center}
+  .cta-box .btn{width:100%;justify-content:center}
+  .cta-note{font-size:12.5px;color:var(--g500);margin-top:14px}
 
   details{max-width:720px;margin:0 auto;border-bottom:1px solid var(--g200)}
   summary{cursor:pointer;list-style:none;padding:20px 4px;font-size:16px;font-weight:600;color:var(--g900);display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -151,11 +146,14 @@
     .sec-title{font-size:28px}
     .nav-links{display:none}
     .hero{padding:48px 0 56px}
-    .phone{order:-1}
+    /* 🔴 Aqui havia `.phone{order:-1}`, que punha o mockup ANTES do título.
+       Medido em 375×812: o mockup ocupava 446px, o título só começava em 666
+       (e o banner de consentimento cobre justamente esse pedaço), e o botão do
+       hero caía em 975 — fora da primeira tela. O motorista abria e via um
+       print, não o motivo de baixar. Agora lê primeiro e decide. */
   }
   @media(max-width:520px){
     .features,.steps{grid-template-columns:1fr}
-    .form-row{flex-direction:column;gap:14px}
     .band .inner{flex-direction:column;text-align:center}
   }
 </style>
@@ -197,12 +195,18 @@
       <div class="phone-inner">
         <div class="pbar">
           <div class="pavatar"><span class="ms">directions_bus</span></div>
-          <div><div class="pt">Olá, motorista</div><div class="ps">Maio • 12 alunos</div></div>
+          <!-- ⚠️ Nada de mês fixo aqui: estava "Maio" em pleno agosto, e print
+               de app com data velha passa a impressão de produto abandonado.
+               "Este mês" não envelhece. -->
+          <div><div class="pt">Olá, Tio João</div><div class="ps">Este mês • 12 alunos</div></div>
         </div>
         <div class="pbody">
           <div class="pcard">
             <div class="lbl">META DO MÊS</div>
-            <div class="val">R$ 4.800 <span style="font-size:12px;color:var(--g400);font-weight:600">de R$ 6.000</span></div>
+            <!-- ⚠️ Valor SEMPRE com centavos (`R$ 0,00`) — é regra do app, e o
+                 app de verdade mostra assim. Print que não bate com a tela real
+                 é promessa quebrada antes mesmo de instalar. -->
+            <div class="val">R$ 4.800,00 <span style="font-size:12px;color:var(--g500);font-weight:600">de R$ 6.000,00</span></div>
             <div class="pmeter">
               <i style="width:55%;background:var(--green)"></i>
               <i style="width:25%;background:var(--orange)"></i>
@@ -269,7 +273,10 @@
       <div class="feat">
         <div class="ic"><span class="ms">school</span></div>
         <h3>Organização por escola</h3>
-        <p>Seus alunos agrupados por escola e turno, do jeito que a rota funciona.</p>
+        <!-- ⛔ Dizia "do jeito que a rota funciona". O app NÃO tem rota, e a
+             palavra sozinha já sugere que tem. Mesma armadilha da tela de
+             login, que promete "gerenciar suas rotas". -->
+        <p>Seus alunos agrupados por escola e turno, do jeito que o seu dia funciona.</p>
       </div>
     </div>
   </div>
@@ -321,32 +328,34 @@
   <div class="wrap">
     <div class="sec-tag">Comece agora</div>
     <h2 class="sec-title">Quero organizar minha van</h2>
-    <p class="sec-sub">Deixe seu contato que a gente te manda o link do app e ajuda no primeiro cadastro.</p>
-    <div class="form-card">
-      <form id="leadForm">
-        <div class="form-row full">
-          <div class="field"><label>Seu nome</label><input type="text" id="f_nome" data-clarity-mask="true" placeholder="Como podemos te chamar" required></div>
-        </div>
-        <div class="form-row">
-          <div class="field"><label>WhatsApp</label><input type="tel" id="f_wpp" data-clarity-mask="true" inputmode="numeric" maxlength="13" placeholder="(11)912345678" pattern="\(\d{2}\)\d{8,9}" title="Use o formato (XX)XXXXXXXXX" required></div>
-          <div class="field"><label>Cidade</label><input type="text" id="f_cidade" data-clarity-mask="true" placeholder="Ex: São Paulo, SP"></div>
-        </div>
-        <div class="form-row">
-          <div class="field"><label>Quantos alunos você atende?</label>
-            <select id="f_alunos">
-              <option>Até 10</option><option>11 a 20</option><option>21 a 40</option><option>Mais de 40</option>
-            </select>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary btn-lg"><span class="ms">rocket_launch</span> Quero começar grátis</button>
-        <p class="form-note">Sem compromisso. A gente entra em contato pelo WhatsApp.</p>
-      </form>
-      <div id="formOk">
-        <span class="ms">check_circle</span>
-        <h3>Recebemos seu contato!</h3>
-        <p style="color:var(--g500);font-size:14.5px">Abrimos o WhatsApp pra você finalizar. Se não abrir, chame a gente no WhatsApp.</p>
-      </div>
+    <p class="sec-sub">Chame a gente no WhatsApp: mandamos o link do app e ajudamos no primeiro cadastro.</p>
+
+    <!-- 🔴 O formulário saiu em 31/08/2026, e não foi enxugamento de layout.
+         Ele NÃO gravava o lead em lugar nenhum: a única saída era abrir o
+         WhatsApp. Mesmo assim mostrava "Recebemos seu contato!" — e se o
+         pop-up fosse bloqueado, ou a pessoa não enviasse a mensagem, o lead
+         sumia enquanto a página garantia que tinha dado certo.
+         ⚠️ Um botão direto é o que a página já fazia, dito com honestidade.
+         📌 Se um dia o lead precisar ser capturado de verdade, o molde existe:
+         a landing `suavan-cadastro` posta na função `passenger-intake`. -->
+    <div class="cta-box">
+      <a class="btn btn-primary btn-lg" href="https://wa.me/5511949426358?text=Ol%C3%A1%21%20Sou%20motorista%20de%20van%20escolar%20e%20quero%20usar%20o%20app%20Sua%20Van." target="_blank" rel="noopener">
+        <span class="ms">chat</span> Falar no WhatsApp
+      </a>
+      <p class="cta-note">Sem compromisso. A conversa já vai com a mensagem pronta.</p>
     </div>
+
+    <!-- ⏳ QUANDO O APP ESTIVER PUBLICADO NA PLAY, trocar o botão acima por
+         este e apagar o comentário. ⛔ Não subir antes: link morto na página
+         para onde o roteiro de recrutamento manda o motorista é pior que
+         nenhum link.
+    <div class="cta-box">
+      <a class="btn btn-primary btn-lg" href="COLAR-AQUI-A-URL-DA-PLAY" target="_blank" rel="noopener">
+        <span class="ms">android</span> Baixar na Google Play
+      </a>
+      <p class="cta-note">Grátis. Funciona no Android que você já tem.</p>
+    </div>
+    -->
   </div>
 </section>
 
@@ -406,25 +415,10 @@
       if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
     });
   });
-  (function(){
-    var wpp=document.getElementById('f_wpp');
-    function mask(v){v=v.replace(/\D/g,'').slice(0,11);if(!v)return '';if(v.length<=2)return '('+v;return '('+v.slice(0,2)+')'+v.slice(2);}
-    wpp.addEventListener('input',function(){this.value=mask(this.value);});
-  })();
-  var WHATS = '5511949426358';
-  document.getElementById('leadForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    var nome=document.getElementById('f_nome').value.trim();
-    var wpp=document.getElementById('f_wpp').value.trim();
-    var cidade=document.getElementById('f_cidade').value.trim();
-    var alunos=document.getElementById('f_alunos').value;
-    var msg='Olá! Sou motorista de van escolar e quero usar o app Sua Van.%0A'+
-      'Nome: '+encodeURIComponent(nome)+'%0AWhatsApp: '+encodeURIComponent(wpp)+
-      '%0ACidade: '+encodeURIComponent(cidade)+'%0AAlunos: '+encodeURIComponent(alunos);
-    document.getElementById('leadForm').style.display='none';
-    document.getElementById('formOk').style.display='block';
-    window.open('https://wa.me/'+WHATS+'?text='+msg,'_blank');
-  });
+  // 📌 O JS do formulário (máscara de telefone + submit) saiu junto com ele em
+  // 31/08/2026. O contato agora é um link direto para o WhatsApp: sem
+  // `window.open`, que pop-up bloqueia em silêncio, e sem estado de "enviado"
+  // para uma coisa que nunca foi enviada.
 </script>
 
 </body>
