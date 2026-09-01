@@ -34,6 +34,10 @@
   a{text-decoration:none;color:inherit}
   .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
   .logo{font-family:'Francois One',sans-serif;font-size:24px;letter-spacing:.5px;color:var(--g900)}
+  /* O logo do cabeçalho é link: alvo de toque de 44px, que é o recomendado
+     para dedo. Sem isto ele fica com 38 — passa no mínimo do WCAG (24), mas
+     é apertado para quem abre o site dentro da van. */
+  header .logo{display:inline-flex;align-items:center;min-height:44px}
   .logo b{background:var(--y500);padding:1px 8px;border-radius:6px}
   .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;border-radius:12px;padding:13px 22px;border:0;cursor:pointer;transition:transform .06s ease}
   .btn:active{transform:scale(.98)}
@@ -162,7 +166,10 @@
 
 <header>
   <div class="wrap nav">
-    <div class="logo">SUA<b>VAN</b></div>
+    <!-- O logo do cabeçalho é LINK para a home. Era um `<div>` cru: parecia
+         clicável, não era, e todo mundo tenta clicar no logo — é das poucas
+         convenções que a web inteira cumpre. -->
+    <a class="logo" href="/" aria-label="Sua Van — ir para o início">SUA<b>VAN</b></a>
     <nav class="nav-links">
       <a href="#recursos">Recursos</a>
       <a href="#como">Como funciona</a>
