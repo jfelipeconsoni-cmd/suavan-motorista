@@ -28,7 +28,7 @@
 <!-- Caveat em pedido SEPARADO, com subconjunto `text=` (só os caracteres do caderno — se o texto
      do caderno mudar, a lista muda junto): é a letra de caneta do inimigo nomeado pela narrativa. -->
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&text=%20012358%3FAHJKMRabcdegilmnopqrstuvw%E2%80%94%E2%9C%93&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_balance_wallet,arrow_forward,chat,check_circle,check_circle_outline,close,directions_bus,edit_note,expand_more,family_restroom,groups,how_to_reg,link,local_shipping,lock,manage_accounts,menu,notifications_active,support_agent,toggle_on&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_balance_wallet,arrow_forward,chat,check_circle,close,directions_bus,download,edit_note,expand_more,family_restroom,groups,how_to_reg,link,lock,manage_accounts,menu,notifications_active,support_agent,toggle_on&display=block" rel="stylesheet">
 <style>
   /* ---------- tokens do Design System ---------- */
   :root{
@@ -96,7 +96,7 @@
   .hero h1{font-size:31px;line-height:1.1;color:#fff;margin-bottom:14px}
   .hero h1 .hl{color:var(--y400)}
   .hero .lead{font-size:16.5px;color:#D1D5DB;max-width:540px;margin-bottom:22px}
-  .hero-ctas{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+  .hero-ctas{display:flex;flex-direction:column;align-items:stretch;gap:16px}
   .hero-ctas .link{font-size:15px;font-weight:600;color:#E5E7EB;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px}
   .hero-ctas .link:hover{color:var(--y400)}
   .trust{display:grid;grid-template-columns:1fr;gap:8px;font-size:13.5px;color:#D1D5DB}
@@ -160,7 +160,15 @@
   .sec-cta{margin-top:32px;display:flex;justify-content:center}
   .sec-cta .btn{width:100%}
 
-  /* ---------- formulário de acesso (seção da página, DS §3.4) ---------- */
+  /* ---------- selo oficial do Google Play ----------
+     Diretriz da marca (Partner Marketing Hub do Google, lida em 11/10/2026): o arquivo é o
+     oficial em português do Brasil, sem mudar cor, proporção nem elementos; altura mínima de
+     28 px; respiro em volta de, no mínimo, 1/4 da altura (aqui, 14 px); fundo liso. */
+  .play-badge{display:inline-flex;align-self:flex-start;border-radius:8px}
+  .play-badge img{display:block;height:56px;width:auto}
+  .hero-ctas .play-badge{align-self:center} /* no celular, centrado como o "Sou pai ou mãe" abaixo */
+
+  /* ---------- seção "Baixar o app" (#acesso: o id antigo fica, para os links já espalhados) ---------- */
   #acesso{background:var(--g50);border-top:1px solid var(--g200)}
   .acesso-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
   .acesso-copy h2{font-size:26px;margin-bottom:12px}
@@ -168,26 +176,15 @@
   .acesso-copy ul{list-style:none;display:grid;gap:10px}
   .acesso-copy li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--g700)}
   .acesso-copy li .ms{color:var(--green);font-size:20px;flex:0 0 auto;margin-top:1px}
-  .acesso-card{background:#fff;border:1px solid var(--g200);border-radius:16px;padding:22px 18px}
+  .acesso-card{background:#fff;border:1px solid var(--g200);border-radius:16px;padding:22px 18px;display:flex;flex-direction:column}
   .acesso-card h3{font-size:18px;margin-bottom:4px}
-  .acesso-card p.sub{font-size:14px;color:var(--g600);margin-bottom:18px}
-  .fld{display:block;margin-bottom:14px}
-  .fld span{display:block;font-size:14px;font-weight:500;color:var(--g700);margin-bottom:7px}
-  .fld span i{font-style:normal;color:var(--g500)}
-  .fld input{width:100%;height:50px;border:1px solid #D9D9D9;border-radius:8px;padding:0 14px;font:inherit;font-size:16px;color:var(--g900);background:#fff}
-  .fld input::placeholder{color:#767676}
-  .fld input:focus{outline:0;border:1.5px solid var(--g900);box-shadow:0 0 0 3px rgba(250,204,21,.45)}
-  .fld input:user-invalid{border:1.5px solid var(--red)}
-  .acesso-card .btn{width:100%;margin-top:4px;padding:0 14px;white-space:nowrap}
+  .acesso-card p.sub{font-size:14px;color:var(--g600);margin-bottom:16px}
+  .acesso-card .play-badge{margin:0 0 4px}
+  .acesso-card .sep{height:1px;background:var(--g200);margin:22px 0 20px}
+  .acesso-card h3.alt{font-size:16px}
+  .acesso-card .btn{width:100%;margin-top:12px;padding:0 14px;white-space:nowrap}
   .acesso-card p.note{font-size:13.5px;color:var(--g500);margin-top:12px;line-height:1.6}
   .acesso-card p.note a{text-decoration:underline;text-underline-offset:3px}
-  .acesso-ok{display:none;text-align:center;padding:6px 0}
-  .acesso-ok .ok-ic{width:72px;height:72px;border-radius:50%;background:#F0FDF4;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-  .acesso-ok .ok-ic .ms{font-size:44px;color:var(--green)}
-  .acesso-ok h3{font-size:20px;margin-bottom:8px}
-  .acesso-ok p{font-size:14px;color:var(--g600);margin-bottom:18px}
-  .acesso-card.done .acesso-form{display:none}
-  .acesso-card.done .acesso-ok{display:block}
   /* faq */
   .faq{max-width:760px}
   details{border-bottom:1px solid var(--g200);padding:6px 0}
@@ -209,6 +206,7 @@
   footer .social a:hover{background:var(--g100)}
   footer .social a[hidden]{display:none} /* rede sem página ainda (Facebook): fica no HTML, não aparece */
   footer .social svg{width:20px;height:20px;fill:currentColor}
+  footer .tm{flex-basis:100%;font-size:12.5px;color:var(--g500)} /* atribuição da marca Google Play, por usar o selo */
 
   /* ---------- telas maiores: só o que muda ---------- */
   @media (min-width:600px){
@@ -217,6 +215,7 @@
     .hero h1{font-size:38px}
     .hero .lead{font-size:18px}
     .hero-ctas{flex-direction:row;align-items:center;gap:22px}
+    .hero-ctas .play-badge{align-self:auto}
     .trust{display:flex;flex-wrap:wrap;gap:18px}
     .trust span{align-items:center}
     .hero-ctas .link{font-size:14.5px}
@@ -300,7 +299,7 @@
       <a href="#compromissos">Compromissos</a>
       <a href="#duvidas">Dúvidas</a>
     </nav>
-    <a class="btn btn-primary cta js-acesso" href="#acesso">Quero ter acesso</a>
+    <a class="btn btn-primary cta js-play" href="https://play.google.com/store/apps/details?id=io.suavan.motorista">Baixar o app</a>
     <button type="button" class="menu" aria-label="Abrir o menu" aria-expanded="false" aria-controls="nav-links"><span class="ms" aria-hidden="true">menu</span></button>
   </div>
 </header>
@@ -313,7 +312,7 @@
       <h1>Papel e caneta não avisam quem está em atraso. <span class="hl">O Sua Van avisa.</span></h1>
       <p class="lead">Marque quem pagou, inclusive quando o pai paga só metade. Veja quem está em atraso. Mande a cobrança pronta — o dinheiro cai direto na sua conta sem burocracia.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary btn-lg js-acesso" href="#acesso"><span class="ms" aria-hidden="true">local_shipping</span> Quero ter acesso</a>
+        <a class="play-badge js-play" href="https://play.google.com/store/apps/details?id=io.suavan.motorista"><img src="img/GetItOnGooglePlay_Badge_Web_color_Portuguese-Brazil.svg" alt="Disponível no Google Play" width="189" height="56"></a>
         <a class="link out" href="https://pais.suavan.com.br">Sou pai ou mãe <span class="ms" aria-hidden="true">arrow_forward</span></a>
       </div>
     </div>
@@ -342,9 +341,9 @@
         <span><span class="ms" aria-hidden="true">check_circle</span> Grátis, sem limite de alunos</span>
         <span><span class="ms" aria-hidden="true">check_circle</span> Cobrança pelo seu Pix</span>
         <span><span class="ms" aria-hidden="true">check_circle</span> Feito para van escolar</span>
-        <span><span class="ms" aria-hidden="true">check_circle</span> Disponível para Android · iOS em breve</span>
+        <span><span class="ms" aria-hidden="true">check_circle</span> Para celular Android</span>
       </div>
-      <p class="note">Em fase de teste fechado: cada motorista entra com acompanhamento e suporte direto. Seus dados ficam protegidos, e o dinheiro da cobrança vai para a sua conta, não para a nossa.</p>
+      <p class="note">Seus dados ficam protegidos, e o dinheiro da cobrança vai para a sua conta, não para a nossa.</p>
     </div>
   </div>
 </section>
@@ -398,7 +397,7 @@
       </figure>
     </div>
     <div class="sec-cta">
-      <a class="btn btn-primary btn-lg js-acesso" href="#acesso"><span class="ms" aria-hidden="true">local_shipping</span> Quero ter acesso</a>
+      <a class="btn btn-primary btn-lg js-play" href="https://play.google.com/store/apps/details?id=io.suavan.motorista"><span class="ms" aria-hidden="true">download</span> Baixar o app</a>
     </div>
   </div>
 </section>
@@ -427,7 +426,7 @@
       <div class="card">
         <div class="ic"><span class="ms" aria-hidden="true">support_agent</span></div>
         <h3>Suporte que responde</h3>
-        <p>Dúvida ou problema? Fale com a gente por <a href="mailto:suporte@suavan.com.br">suporte@suavan.com.br</a>. No teste fechado, o acompanhamento é direto.</p>
+        <p>Dúvida ou problema? Fale com a gente por <a href="mailto:suporte@suavan.com.br">suporte@suavan.com.br</a> ou pelo WhatsApp. Quem responde é quem faz o app.</p>
       </div>
     </div>
     <p class="legal-links"><a href="/termos/" target="_blank" rel="noopener">Termos de uso</a> <a href="/privacidade/" target="_blank" rel="noopener">Política de Privacidade</a> <a href="https://suavan.com.br/excluir-conta/">Como excluir sua conta</a></p>
@@ -437,30 +436,24 @@
 <section id="acesso">
   <div class="wrap acesso-grid">
     <div class="acesso-copy">
-      <div class="sec-tag">Quero ter acesso</div>
-      <h2>Seja um dos primeiros a ter acesso.</h2>
-      <p>O app está em lista exclusiva Google Play: o acesso é liberado por convite, pelo e-mail da sua conta Google. Preencha o seu e-mail e a mensagem já sai pronta no seu WhatsApp.</p>
+      <div class="sec-tag">Baixar o app</div>
+      <h2>O Sua Van está na Google Play.</h2>
+      <p>Instale no Android que você já tem, crie a sua conta e cadastre um aluno para ver se o app serve para você.</p>
       <ul>
         <li><span class="ms" aria-hidden="true">check_circle</span> Grátis, sem limite de alunos e sem cartão.</li>
-        <li><span class="ms" aria-hidden="true">check_circle</span> Funciona no Android que você já tem.</li>
-        <li><span class="ms" aria-hidden="true">check_circle</span> Acompanhamento e suporte direto durante o teste.</li>
+        <li><span class="ms" aria-hidden="true">check_circle</span> Para celular Android.</li>
+        <li><span class="ms" aria-hidden="true">check_circle</span> Travou em alguma tela? Fale com quem faz o app, pelo WhatsApp.</li>
       </ul>
     </div>
-    <div class="acesso-card" id="acesso-card">
-      <form class="acesso-form" id="acesso-form" novalidate>
-        <h3>Pedir acesso</h3>
-        <p class="sub">Leva menos de um minuto. Use o mesmo e-mail da conta Google que está na sua Play Store.</p>
-        <label class="fld"><span>Seu nome <i>(opcional)</i></span><input type="text" name="nome" autocomplete="name" data-clarity-mask="true" placeholder="Como podemos te chamar"></label>
-        <label class="fld"><span>Seu e-mail Google para ter acesso ao app</span><input type="email" name="email" autocomplete="email" inputmode="email" data-clarity-mask="true" placeholder="voce@gmail.com" required></label>
-        <button type="submit" class="btn btn-primary btn-lg"><span class="ms" aria-hidden="true">chat</span> Enviar pelo WhatsApp</button>
-        <p class="note">Nada fica guardado nesta página: o e-mail vai só na mensagem que você envia. Veja a <a href="/privacidade/" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
-      </form>
-      <div class="acesso-ok" aria-live="polite">
-        <div class="ok-ic"><span class="ms" aria-hidden="true">check_circle_outline</span></div>
-        <h3 tabindex="-1">Mensagem pronta</h3>
-        <p>Abrimos o WhatsApp com o seu pedido. É só tocar em enviar — e o acesso é liberado por convite.</p>
-        <a class="btn btn-outline" id="acesso-reabrir" href="#" target="_blank" rel="noopener">Abrir o WhatsApp de novo</a>
-      </div>
+    <div class="acesso-card">
+      <h3>Instalar pela Google Play</h3>
+      <p class="sub">O botão abre a página oficial do Sua Van na loja do Google.</p>
+      <a class="play-badge js-play" href="https://play.google.com/store/apps/details?id=io.suavan.motorista"><img src="img/GetItOnGooglePlay_Badge_Web_color_Portuguese-Brazil.svg" alt="Disponível no Google Play" width="189" height="56"></a>
+      <p class="note">Para entrar no app, ninguém do Sua Van pede senha, código nem dinheiro.</p>
+      <div class="sep" aria-hidden="true"></div>
+      <h3 class="alt">Prefere tirar uma dúvida antes?</h3>
+      <a class="btn btn-outline js-whats" href="https://wa.me/5511949426358?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20app%20Sua%20Van" target="_blank" rel="noopener"><span class="ms" aria-hidden="true">chat</span> Falar pelo WhatsApp</a>
+      <p class="note">Abre o seu WhatsApp com uma mensagem pronta, e você decide se envia. Veja a <a href="/privacidade/" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
     </div>
   </div>
 </section>
@@ -492,7 +485,7 @@
       </details>
       <details>
         <summary>Como faço para baixar o app? <span class="ms" aria-hidden="true">expand_more</span></summary>
-        <p>Ele está em lista exclusiva na Google Play. Toque em "Quero ter acesso" e fale com a gente pelo WhatsApp: o acesso é liberado por convite e o app aparece para baixar no Android que você já tem. A versão para iPhone está a caminho.</p>
+        <p>Pela Google Play. Toque em "Disponível no Google Play", aqui na página: abre a página do app na loja. Instale, crie a sua conta e cadastre o primeiro aluno. Hoje o app é só para Android.</p>
       </details>
       <details>
         <summary>Funciona sem internet? <span class="ms" aria-hidden="true">expand_more</span></summary>
@@ -532,6 +525,7 @@
       <a href="mailto:suporte@suavan.com.br">suporte@suavan.com.br</a>
     </nav>
     <span class="copy">© <span id="ano">2026</span> Sua Van</span>
+    <span class="tm">Google Play e o logotipo do Google Play são marcas da Google LLC.</span>
   </div>
 </footer>
 
@@ -631,36 +625,52 @@
   // O "2026" no HTML é só reserva para quem estiver sem JavaScript.
   (function(){ var el = document.getElementById("ano"); if(el){ el.textContent = new Date().getFullYear(); } })();
 
-  // Formulário de acesso: coleta o e-mail e abre o WhatsApp com a mensagem pronta.
-  // Nada é enviado a servidor nenhum — o dado vai só na mensagem do próprio motorista.
+  // Etiqueta de origem no link da Play (elo 4 da atribuição, "UTMs — Padrão e Links Prontos" §7):
+  // o UTM do link de entrada vai no parâmetro `referrer` do link da loja, que a Play guarda e mostra
+  // no Console (Aquisição). Mesma guarda de FORMA da origemUtm (slug a-z, 0-9, - e _, até 24),
+  // com a campanha e a variação junto. Sem fonte, nada: o link da loja fica como está no HTML.
+  // ⛔ A origemUtm não muda: ela é idêntica à da página dos pais, e a prova das duas exige isso.
+  function referrerPlay(search){
+    var p = new URLSearchParams(search);
+    function slug(k){ var v = (p.get(k) || '').trim().toLowerCase(); return /^[a-z0-9_-]{1,24}$/.test(v) ? v : ''; }
+    var fonte = slug('utm_source');
+    if(!fonte) return '';
+    var partes = ['utm_source=' + fonte];
+    ['utm_medium', 'utm_campaign', 'utm_content'].forEach(function(k){ var v = slug(k); if(v) partes.push(k + '=' + v); });
+    return partes.join('&');
+  }
+
+  // Botões da Play (.js-play: cabeçalho, selo do topo, botão do meio e selo da seção "Baixar o app").
+  // O href do HTML já é o link limpo da loja, então sem JavaScript o botão funciona igual.
   (function(){
-    var WHATS = '5511949426358';
-    var card = document.getElementById('acesso-card');
-    var form = document.getElementById('acesso-form');
-    var reabrir = document.getElementById('acesso-reabrir');
-    if(!card || !form) return;
-    document.querySelectorAll('.js-acesso').forEach(function(b){
-      b.addEventListener('click', function(){
-        if(typeof window.clarity === 'function'){ window.clarity('set', 'cta_origem', origem(b)); window.clarity('event', 'acesso_form_abrir'); }
-        // Depois da rolagem, o cursor já vai para o primeiro campo.
-        setTimeout(function(){ var first = form.querySelector('input[name="nome"]'); if(first) first.focus({preventScroll:true}); }, 600);
+    var ref = referrerPlay(window.location.search);
+    document.querySelectorAll('.js-play').forEach(function(el){
+      if(ref){ var u = new URL(el.href); u.searchParams.set('referrer', ref); el.href = u.toString(); } // set() codifica = e &
+      el.addEventListener('click', function(){
+        if(typeof window.clarity !== 'function') return;
+        window.clarity('set', 'segmento', 'motorista');
+        window.clarity('set', 'cta_origem', origem(el));
+        window.clarity('event', 'play_abrir');
       });
     });
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var email = form.email.value.trim();
-      if(!form.email.checkValidity() || !email){ form.email.reportValidity(); return; }
-      var nome = form.nome.value.trim();
-      var via = origemUtm(window.location.search); // '' quando o link não trouxe UTM: a mensagem fica como sempre foi
-      var msg = 'Olá, quero fazer parte do app Sua Van, meu e-mail é: ' + email + (nome ? ' (' + nome + ')' : '') + (via ? ' — via ' + via : '');
-      var url = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg);
-      reabrir.href = url;
-      if(typeof window.clarity === 'function'){ window.clarity('set', 'segmento', 'motorista'); window.clarity('event', 'acesso_whatsapp_enviar'); }
-      window.open(url, '_blank', 'noopener');
-      card.classList.add('done');
-      var okTitle = card.querySelector('.acesso-ok h3'); if(okTitle) okTitle.focus();
+  })();
+
+  // "Falar pelo WhatsApp": um link comum, que abre a conversa com a mensagem pronta. Sem formulário,
+  // nenhum dado é pedido; o "— via fonte/meio" vem da origemUtm, como antes no pedido de acesso.
+  // O evento mantém o nome antigo (acesso_whatsapp_enviar) para a série do Clarity não quebrar.
+  (function(){
+    var WHATS = '5511949426358';
+    var via = origemUtm(window.location.search); // '' quando o link não trouxe UTM
+    var msg = 'Olá, tenho uma dúvida sobre o app Sua Van' + (via ? ' — via ' + via : '');
+    document.querySelectorAll('.js-whats').forEach(function(el){
+      el.href = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg);
+      el.addEventListener('click', function(){
+        if(typeof window.clarity !== 'function') return;
+        window.clarity('set', 'segmento', 'motorista');
+        window.clarity('set', 'cta_origem', origem(el));
+        window.clarity('event', 'acesso_whatsapp_enviar');
+      });
     });
-    reabrir.addEventListener('click', function(){ if(typeof window.clarity === 'function'){ window.clarity('event', 'acesso_whatsapp_reabrir'); } });
   })();
 
   // FAQ: um evento só para qualquer pergunta aberta. ⛔ Sem o texto da pergunta no
